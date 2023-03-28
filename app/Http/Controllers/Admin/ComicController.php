@@ -6,6 +6,8 @@ use App\Http\Requests\StoreComicRequest;
 use App\Http\Requests\UpdateComicRequest;
 use App\Models\Comic;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
+
 
 class ComicController extends Controller
 {
@@ -59,7 +61,7 @@ class ComicController extends Controller
      */
     public function edit(Comic $comic)
     {
-        //
+        return view('admin.posts.edit', compact('post'));
     }
 
     /**
@@ -71,7 +73,13 @@ class ComicController extends Controller
      */
     public function update(UpdateComicRequest $request, Comic $comic)
     {
-        //
+        $data = $request->validated();
+
+        $slug = Str::slug($data['name']);
+
+        $comic->update($data);
+
+        return redirect()->route('admin.posts.index', $comic->id);
     }
 
     /**
@@ -82,6 +90,8 @@ class ComicController extends Controller
      */
     public function destroy(Comic $comic)
     {
-        //
+        $comic->delete();
+
+        return redirect()->route('admin.posts.index');
     }
 }
