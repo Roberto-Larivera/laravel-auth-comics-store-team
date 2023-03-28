@@ -4,6 +4,10 @@ use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Admin\RequestController;
+use App\Http\Controllers\Admin\ComicController;
+use App\Http\Controllers\Admin\StoreController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,6 +25,9 @@ Route::get('/', function () {
 
 Route::prefix('admin')->name('admin.')->middleware(['auth', 'verified'])->group(function (){
     Route::get('/dashboard', [PageController::class, 'dashboard'] )->name('dashboard');
+    Route::resource('comics', ComicController::class);
+    Route::resource('stores', StoreController::class);
+    Route::resource('requests', RequestController::class);
 });
 
 
