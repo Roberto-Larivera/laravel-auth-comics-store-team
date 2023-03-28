@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::table('comics', function (Blueprint $table) {
             $table->unsignedBigInteger('store_id')->nullable();
             $table->foreign('store_id')
-            ->references('id')
-            ->on('stores')
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
+                ->references('id')
+                ->on('stores')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
         });
     }
 
