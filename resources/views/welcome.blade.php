@@ -12,6 +12,7 @@
             </div>
             <h1 class="display-5 fw-bold">
                 Welcome to Laravel+Bootstrap 1
+                Made by Francesca, Roberto, Ludovico, Samuel, Francesco &hearts;
             </h1>
         </div>
     </div>
