@@ -38,7 +38,7 @@
                     </div>
                     <div class="mb-3">
                         <p>
-                            The fields with * are <strong>compulsory</strong>.
+                            I campi contrasseganti con <strong>*</strong> sono obbligatori.
                         </p>
                     </div>
                     <div>
