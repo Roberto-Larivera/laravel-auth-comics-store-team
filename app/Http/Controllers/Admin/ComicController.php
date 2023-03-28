@@ -44,7 +44,7 @@ class ComicController extends Controller
 
         // Riempio dati + salvo i dati con ::create
         $newComic = Comic::create($data);
-        
+
 
         // Redirect + messaggio di successo
         return redirect()->route('admin.comics.show', $newComic->id);
@@ -60,7 +60,7 @@ class ComicController extends Controller
     public function show(Comic $comic)
     {
         //dd($comics);
-        return view('admin.comics.show', compact('comics'));
+        return view('admin.comics.show', compact('comic'));
     }
 
     /**
@@ -71,7 +71,7 @@ class ComicController extends Controller
      */
     public function edit(Comic $comic)
     {
-        return view('admin.posts.edit', compact('post'));
+        return view('admin.comics.edit', compact('comic'));
     }
 
     /**
@@ -85,11 +85,9 @@ class ComicController extends Controller
     {
         $data = $request->validated();
 
-        $slug = Str::slug($data['name']);
-
         $comic->update($data);
 
-        return redirect()->route('admin.posts.index', $comic->id);
+        return redirect()->route('admin.comics.index', $comic->id);
     }
 
     /**
@@ -102,6 +100,6 @@ class ComicController extends Controller
     {
         $comic->delete();
 
-        return redirect()->route('admin.posts.index');
+        return redirect()->route('admin.comics.index');
     }
 }
