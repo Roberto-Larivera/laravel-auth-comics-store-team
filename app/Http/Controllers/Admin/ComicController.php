@@ -26,7 +26,7 @@ class ComicController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.comics.create');
     }
 
     /**
@@ -37,8 +37,16 @@ class ComicController extends Controller
      */
     public function store(StoreComicRequest $request)
     {
-        //
+        $data = $request->validated();
+
+        // Riempio dati + salvo i dati con ::create
+        $newComic = Comic::create($data);
+        
+
+        // Redirect + messaggio di successo
+        return redirect()->route('admin.comics.show', $newComic->id);
     }
+
 
     /**
      * Display the specified resource.
